@@ -17,12 +17,18 @@ const main = async () => {
             console.log(tableHeaders);
             return true;
         }
+        
         const tds = $(element).find("td");
-        const company = $(tds[0]).text();
-        const contact = $(tds[1]).text();
-        const country = $(tds[2]).text();
-        const scrapedRow = {company, contact, country };
-        scrapedRows.push(scrapedRow);
+        tds.each((index, element) => {
+            const rowObject = {};
+            rowObject.tableHeaders[index] = element;
+            scrapedRows.push(rowObject);
+        });
+        // const company = $(tds[0]).text();
+        // const contact = $(tds[1]).text();
+        // const country = $(tds[2]).text();
+        // const scrapedRow = {company, contact, country };
+        // scrapedRows.push(scrapedRow);
     });
     console.log(scrapedRows);
 }

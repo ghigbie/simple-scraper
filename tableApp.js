@@ -6,7 +6,6 @@ const tableJSONArray = [];
 const main = async () => {
     const result = await request.get("https://www.codingwithstefan.com/table-example/");
     const $ = cheerio.load(result);
-    const tableHeaders = [];
     const scrapedRows = [];
     $("body > table > tbody > tr").each((index, element) => {
         if (index === 0){
